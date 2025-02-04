@@ -20,14 +20,19 @@ public abstract class Shape {
         this.name = name;
     }
 
-    public void Shape() {}
-    public void Shape(String name) {
+    public Shape() {}
+    public Shape(String name) {
         this.name = name;
     }
 
     public abstract void calculationArea();
 
     public void print() {
-        System.out.println(getName() + "의 면적은 " + getArea());
+        if (this.name == "원") {
+            System.out.printf("%s의 면적은 %f%n", name, area);
+        } else if (this.name == "직사각형") {
+            System.out.printf("%s의 면적은 %.1f%n", name, area);
+        }
+
     }
 }

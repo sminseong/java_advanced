@@ -4,6 +4,13 @@ public class Rectangular extends Shape{
     private double width;
     private double hight;
 
+    public Rectangular(double width, double hight, String name) {
+        super(name);
+        this.width = width;
+        this.hight = hight;
+        calculationArea();
+    }
+
     public double getHight() {
         return hight;
     }
@@ -22,7 +29,8 @@ public class Rectangular extends Shape{
 
     @Override
     public void calculationArea() {
-        setArea(getWidth()*getHight());
+        double result = this.width * this.hight;
+        this.area = result;
     }
 
 }
