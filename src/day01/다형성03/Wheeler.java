@@ -1,9 +1,11 @@
 package day01.다형성03;
 
-public abstract public class Wheeler {
+public abstract class Wheeler {
     protected int velocity;
     protected String carName;
     protected int wheelNumber;
+
+    public Wheeler() {}
 
     public Wheeler(String carName, int velocity, int wheelNumber) {
         this.carName = carName;
@@ -36,7 +38,7 @@ public abstract public class Wheeler {
 
     public void stop() {
          velocity = 0;
-         System.out.println("");
+         System.out.println("정지상태로 속도를 " + velocity + "으로 초기화합니다.");
     }
 
 }

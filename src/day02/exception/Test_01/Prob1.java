@@ -17,8 +17,7 @@ public class Prob1 {
 	//필요할 경우 다음의 메서드 선언부분(메서드 시그너처)을 수정하시기 바랍니다.
 	private static int convert(String str) {
 		//여기를 작성하십시오.
-		int data = Integer.parseInt(str);
-		return data;
+		return Integer.parseInt(str);
 	}
 	
 }
