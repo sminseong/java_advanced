@@ -29,5 +29,9 @@ public interface RemoteControlMain {
         remoteControl.setVolume(20);
         //4. 리모컨을 이용하여 라디오를 끈다.
         remoteControl.turnOff();
+
+        remoteControl.setMute(true);    //디폴트 메소드 호출
+        remoteControl.setMute(false);
+        RemoteControl.changeBattery();
     }
 }

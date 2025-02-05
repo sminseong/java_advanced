@@ -11,13 +11,22 @@ public class Prob1 {
 		String str = scan.nextLine();
 		int result = 0;
 		//여기를 작성하십시오.
-		System.out.println(convert(str));
-	}
+        try {
+            result = convert(str);
+			System.out.println(result);
+        } catch (Exception e) {
+			System.out.println(e.getMessage());
+        }
+    }
 	
 	//필요할 경우 다음의 메서드 선언부분(메서드 시그너처)을 수정하시기 바랍니다.
 	private static int convert(String str) {
 		//여기를 작성하십시오.
-		return Integer.parseInt(str);
+		if (str==null || str.length()==0) {
+			throw new IllegalArgumentException("예외가 발생하였습니다. 문자열을 입력하지않고 Enter키를 누르셨습니다.");
+		} else {
+			return Integer.parseInt(str);
+		}
 	}
 	
 }
