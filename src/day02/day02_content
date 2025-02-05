@@ -1,0 +1,17 @@
+1. 예외 와 예외 클래스
+ - 일반 예외 (Exception)
+    컴파일러가 예외 처리 코드 여부를 검사
+ - 실행 예외 (Runtime Exception)
+    컴파일러가 예외 처리 코드 여부를 검사하지 않는 예외
+
+2. 예외 처리 코드
+try - catch
+try - catch - finally
+
+- 컴파일 에러 (compile-time error) : 컴파일시에 발생하는 에러, 문법 구문 오류(syntax error)
+- 런타임 에러 (runtime error) : 실행시에 발생하는 에러 (설계 미숙시 많이 발생)
+- 논리적 에러 (logical error) : 실행은 되지만 의도와 다르게 동작하거나 성능개선을 하다 나타나는 오류
+
+4. 리소스 자동닫기
+
+5. 사용자 정의 예외
