@@ -6,3 +6,6 @@
     public interface 자식인터페이스 extends 엄마인터페이스, 아빠인터페이스 { .... }
     // 구현 클래스
     public class baby implements 자식인터페이스
+
+
+> 인터페이스는 인터페이스를 상속할 수 있으며 상속받은 인터페이스의 메소드를 사용할 수 있다.
