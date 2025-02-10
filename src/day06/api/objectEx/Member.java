@@ -1,6 +1,5 @@
-package day06.api;
+package day06.api.objectEx;
 
-import java.io.ObjectStreamClass;
 import java.util.Objects;
 
 //객체의 동등비교

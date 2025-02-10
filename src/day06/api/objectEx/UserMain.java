@@ -1,4 +1,4 @@
-package day06.api;
+package day06.api.objectEx;
 
 import java.util.Arrays;
 

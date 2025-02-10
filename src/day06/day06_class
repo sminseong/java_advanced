@@ -1,4 +1,4 @@
-Object 클래스
+1. Object 클래스
 - boolean equals(Object obj)
     객체 동등 비교 시 equals() 사용
     객체의 주소값을 비교하고 boolean(true, false) 값을 리턴
@@ -21,4 +21,31 @@ Object 클래스
 - clone 메소드 : 객체를 깊은 복사(deep copy) 할 때 사용하는 메소드
 Object.clone() 메소드는 인스턴스 객체의 복제를 위한 메소드
 해당 인스턴스를 복제해서 새로운 인스턴스를 생성해 그 참조값을 반환한다.
+
+
+
+2. System 클래스
+자바의 byte 코드의 실행 주체는,
+JVM 이 위에서 실행되므로, 운영체제의 모든 기능을
+자바코드로 직접 접근하기 어렵습니다.
+java.lang.System 이용하면 운영체제의 일부 기능을 이용할 수 있다.
+
+System.exit(0);     //프로세스를 강제로 종료
+
+// 진행 시간 읽기
+System 클래스 |  1970년 1월 1일 0시부터 시작해서 현재까지 진행된 시간
+             |  currentTimeMills()  1/1000초 단위로 진행된 시간 반환
+             |  nanoTime()          1/1000000000초 단위로 진행된 시간 반환
+
+
+
+
+
+
+
+
+
+
+
+
 
