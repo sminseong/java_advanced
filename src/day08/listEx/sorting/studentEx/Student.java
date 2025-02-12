@@ -25,7 +25,7 @@ public class Student implements Comparable<Student>{
     }
 
     public void studentInfo() {
-        System.out.println("학생정보를 입력하세요.");
+        System.out.println("학생정보를 입력하세요 (이름, 학번, 국어, 수학, 영어)");
         name = sc.next();
         sno = sc.nextInt();
         scores.add(sc.nextInt());
