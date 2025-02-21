@@ -1,5 +1,6 @@
 package boardEx;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class BoardExample {
@@ -8,9 +9,9 @@ public class BoardExample {
     private int boardCount = 0;
 
     public void list() {
-        System.out.println("[ 게시물 목록 ]");
+        System.out.println("\n[ 게시물 목록 ]");
         System.out.println("-".repeat(70));
-        System.out.println("no\twriter\t\tdate\t\t\t\ttitle");
+        System.out.println("no\twriter\t\t\tdate\t\t\t\t\t\ttitle");
         System.out.println("-".repeat(70));
 
         for (int key : boards.keySet()) {
@@ -20,6 +21,23 @@ public class BoardExample {
         System.out.println("-".repeat(70));
 
         mainMenu();
+    }
+
+    public void mainMenu() {
+        System.out.println("메인 메뉴: 1.Create | 2.Read | 3.Clear | 4.Exit");
+        System.out.print("메뉴 선택: ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+
+        if (choice == 1) {
+            create();
+        } else if (choice == 2) {
+            read();
+        } else if (choice == 3) {
+            clear();
+        } else if (choice == 4) {
+            exit();
+        }
     }
 
     public void create() {
@@ -102,7 +120,7 @@ public class BoardExample {
 
     public void delete(Board board) {
         boards.remove(board.getBno());
-        System.out.println("게시물이 삭제되었습니다.");
+        System.out.println("해당 게시물이 삭제되었습니다.");
         list();
     }
 
@@ -127,22 +145,5 @@ public class BoardExample {
         System.out.println("프로그램을 종료합니다.");
         sc.close();
         System.exit(0);
-    }
-
-    public void mainMenu() {
-        System.out.println("메인 메뉴: 1.Create | 2.Read | 3.Clear | 4.Exit");
-        System.out.print("메뉴 선택: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
-
-        if (choice == 1) {
-            create();
-        } else if (choice == 2) {
-            read();
-        } else if (choice == 3) {
-            clear();
-        } else if (choice == 4) {
-            exit();
-        }
     }
 }
