@@ -130,11 +130,11 @@ public class BoardExample {
     public void update(Board board) {
         System.out.println("\n[ 수정 내용 입력 ]");
         System.out.print("제목: ");
-        board.setBtitle(sc.nextLine());
+        String title = sc.nextLine();
         System.out.print("내용: ");
-        board.setBcontent(sc.nextLine());
+        String content = sc.nextLine();
         System.out.print("작성자: ");
-        board.setBwriter(sc.nextLine());
+        String writer = sc.nextLine();
 
         while (true) {
             try {
@@ -144,6 +144,9 @@ public class BoardExample {
                 sc.nextLine();
 
                 if (choice == 1) {
+                    board.setBtitle(title);
+                    board.setBcontent(content);
+                    board.setBwriter(writer);
                     System.out.println("게시물이 수정되었습니다.");
                     list();
                 } else if (choice == 2) {
