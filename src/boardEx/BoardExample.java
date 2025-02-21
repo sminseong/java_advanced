@@ -11,12 +11,12 @@ public class BoardExample {
     public void list() {
         System.out.println("\n[ 게시물 목록 ]");
         System.out.println("-".repeat(70));
-        System.out.println("no\twriter\t\t\tdate\t\t\t\t\t\ttitle");
+        System.out.println("no\twriter\t\t\tdate\t\t\t\t\ttitle");
         System.out.println("-".repeat(70));
 
         for (int key : boards.keySet()) {
             Board board = boards.get(key);
-            System.out.printf("%d\t%s\t%s\t%s%n", board.getBno(), board.getBwriter(), board.getBdate(), board.getBtitle());
+            System.out.printf("%-4d%-7s%-30s%-30s%n", board.getBno(), board.getBwriter(), board.getBdate(), board.getBtitle());
         }
         System.out.println("-".repeat(70));
 
@@ -24,20 +24,26 @@ public class BoardExample {
     }
 
     public void mainMenu() {
-        System.out.println("메인 메뉴: 1.Create | 2.Read | 3.Clear | 4.Exit");
-        System.out.print("메뉴 선택: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
+        while (true) {
+            try {
+                System.out.println("메인 메뉴: 1.Create | 2.Read | 3.Clear | 4.Exit");
+                System.out.print("메뉴 선택: ");
+                int choice = sc.nextInt();
+                sc.nextLine();
 
-        if (choice == 1) {
-            create();
-        } else if (choice == 2) {
-            read();
-        } else if (choice == 3) {
-            clear();
-        } else if (choice == 4) {
-            exit();
+                switch (choice) {
+                    case 1: create(); break;
+                    case 2: read(); break;
+                    case 3: clear(); break;
+                    case 4: exit(); break;
+                    default:
+                        System.out.println("1, 2, 3, 4 중에 입력해야 합니다.");
+                }
+            } catch (Exception e) {
+                handleInvalidInput();
+            }
         }
+
     }
 
     public void create() {
@@ -52,18 +58,28 @@ public class BoardExample {
         board.setBdate(new Date());
         board.setBno(++boardCount);
 
-        System.out.println("보조 메뉴: 1.Ok | 2.Cancel");
-        System.out.print("메뉴 선택: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
+        while (true) {
+            try {
+                System.out.println("보조 메뉴: 1.Ok | 2.Cancel");
+                System.out.print("메뉴 선택: ");
+                int choice = sc.nextInt();
+                sc.nextLine();
 
-        if (choice == 1) {
-            boards.put(board.getBno(), board);
-            System.out.println("게시물이 저장되었습니다.");
-        } else {
-            System.out.println("취소되었습니다.");
+                if (choice == 1) {
+                    boards.put(board.getBno(), board);
+                    System.out.println("게시물이 저장되었습니다.");
+                    list();
+                } else if (choice == 2) {
+                    System.out.println("취소되었습니다.");
+                    list();
+                } else {
+                    System.out.println("1, 2 중에 입력해야 합니다.");
+                }
+            } catch (Exception e) {
+                handleInvalidInput();
+            }
         }
-        list();
+
     }
 
     public void read() {
@@ -71,6 +87,11 @@ public class BoardExample {
         System.out.print("bno: ");
         int bno = sc.nextInt();
         sc.nextLine();
+
+        if (!boards.containsKey(bno)) {
+            System.out.println("입력하신 bno 가 존재하지 않습니다.");
+            read();
+        }
 
         Board board = boards.get(bno);
         System.out.println("#".repeat(30));
@@ -81,18 +102,27 @@ public class BoardExample {
         System.out.println("날짜: " + board.getBdate());
         System.out.println("#".repeat(30));
 
-        System.out.println("보조 메뉴: 1.Update | 2.Delete | 3.List");
-        System.out.print("메뉴 선택: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
+        while (true) {
+            try {
+                System.out.println("보조 메뉴: 1.Update | 2.Delete | 3.List");
+                System.out.print("메뉴 선택: ");
+                int choice = sc.nextInt();
+                sc.nextLine();
 
-        if (choice == 1) {
-            update(board);
-        } else if (choice == 2) {
-            delete(board);
-        } else if (choice == 3) {
-            list();
+                if (choice == 1) {
+                    update(board);
+                } else if (choice == 2) {
+                    delete(board);
+                } else if (choice == 3) {
+                    list();
+                } else {
+                    System.out.println("1, 2, 3 중에 입력해야합니다.");
+                }
+            } catch (Exception e) {
+                handleInvalidInput();
+            }
         }
+
     }
 
     public void update(Board board) {
@@ -104,18 +134,26 @@ public class BoardExample {
         System.out.print("작성자: ");
         board.setBwriter(sc.nextLine());
 
-        System.out.println("보조 메뉴: 1.Ok | 2.Cancel");
-        System.out.print("메뉴 선택: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
+        while (true) {
+            try {
+                System.out.println("보조 메뉴: 1.Ok | 2.Cancel");
+                System.out.print("메뉴 선택: ");
+                int choice = sc.nextInt();
+                sc.nextLine();
 
-        if (choice == 1) {
-            System.out.println("게시물이 수정되었습니다.");
-        } else {
-            System.out.println("수정이 취소되었습니다.");
+                if (choice == 1) {
+                    System.out.println("게시물이 수정되었습니다.");
+                    list();
+                } else if (choice == 2) {
+                    System.out.println("수정이 취소되었습니다.");
+                    list();
+                } else {
+                    System.out.println("1, 2 중에 입력해야 합니다.");
+                }
+            } catch (Exception e) {
+                handleInvalidInput();
+            }
         }
-
-        list();
     }
 
     public void delete(Board board) {
@@ -126,24 +164,38 @@ public class BoardExample {
 
     public void clear() {
         System.out.println("\n[ 전체 게시물 삭제 ]");
-        System.out.println("보조 메뉴: 1.Ok | 2.Cancel");
-        System.out.print("메뉴 선택: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
 
-        if (choice == 1) {
-            boards.clear();
-            System.out.println("모든 게시물이 삭제되었습니다.");
-        } else {
-            System.out.println("취소되었습니다.");
+        while (true) {
+            try {
+                System.out.println("보조 메뉴: 1.Ok | 2.Cancel");
+                System.out.print("메뉴 선택: ");
+                int choice = sc.nextInt();
+                sc.nextLine();
+
+                if (choice == 1) {
+                    boards.clear();
+                    System.out.println("모든 게시물이 삭제되었습니다.");
+                    list();
+                } else if (choice == 2){
+                    System.out.println("취소되었습니다.");
+                    list();
+                } else {
+                    System.out.println("1, 2 중에 입력해야 합니다.");
+                }
+            } catch (Exception e) {
+                handleInvalidInput();
+            }
         }
-
-        list();
     }
 
     public void exit() {
-        System.out.println("프로그램을 종료합니다.");
+        System.out.println("\n프로그램을 종료합니다.");
         sc.close();
         System.exit(0);
+    }
+
+    public void handleInvalidInput() {
+        System.out.println("숫자를 입력해 주세요.");
+        sc.nextLine();
     }
 }
