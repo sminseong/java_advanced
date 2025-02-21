@@ -6,17 +6,20 @@ import java.util.*;
 public class BoardExample {
     private Map<Integer, Board> boards = new HashMap<>();
     private Scanner sc = new Scanner(System.in);
-    private int boardCount = 0;
+    private static int boardNumber = 0;
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 
     public void list() {
         System.out.println("\n[ 게시물 목록 ]");
         System.out.println("-".repeat(70));
-        System.out.println("no\twriter\t\t\tdate\t\t\t\t\ttitle");
+        System.out.println("no\twriter\t\tdate\t\t\ttitle");
         System.out.println("-".repeat(70));
 
-        for (int key : boards.keySet()) {
-            Board board = boards.get(key);
-            System.out.printf("%-4d%-7s%-30s%-30s%n", board.getBno(), board.getBwriter(), board.getBdate(), board.getBtitle());
+        for (HashMap.Entry<Integer, Board> entry : boards.entrySet()) {
+            Board board = entry.getValue();
+            String date = sdf.format(board.getBdate());
+            System.out.printf("%-4d%-10s%-15s%-30s%n", board.getBno(), board.getBwriter(), date, board.getBtitle());
         }
         System.out.println("-".repeat(70));
 
@@ -43,7 +46,6 @@ public class BoardExample {
                 handleInvalidInput();
             }
         }
-
     }
 
     public void create() {
@@ -56,7 +58,7 @@ public class BoardExample {
         System.out.print("작성자: ");
         board.setBwriter(sc.nextLine());
         board.setBdate(new Date());
-        board.setBno(++boardCount);
+        board.setBno(++boardNumber);
 
         while (true) {
             try {
@@ -79,7 +81,6 @@ public class BoardExample {
                 handleInvalidInput();
             }
         }
-
     }
 
     public void read() {
@@ -94,12 +95,14 @@ public class BoardExample {
         }
 
         Board board = boards.get(bno);
+        String date = sdf.format(board.getBdate());
+
         System.out.println("#".repeat(30));
         System.out.println("번호: " + board.getBno());
         System.out.println("제목: " + board.getBtitle());
         System.out.println("내용: " + board.getBcontent());
         System.out.println("작성자: " + board.getBwriter());
-        System.out.println("날짜: " + board.getBdate());
+        System.out.println("날짜: " + date);
         System.out.println("#".repeat(30));
 
         while (true) {
@@ -122,7 +125,6 @@ public class BoardExample {
                 handleInvalidInput();
             }
         }
-
     }
 
     public void update(Board board) {
@@ -190,7 +192,6 @@ public class BoardExample {
 
     public void exit() {
         System.out.println("\n프로그램을 종료합니다.");
-        sc.close();
         System.exit(0);
     }
 
