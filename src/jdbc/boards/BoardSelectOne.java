@@ -20,7 +20,7 @@ public class BoardSelectOne {
             // 3. 매개변수화된 SQL문 작성
             String query = "SELECT * FROM boards WHERE bno = ?";
             PreparedStatement pstmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-            pstmt.setInt(1, 1);
+            pstmt.setInt(1, 2);
 
             // 4. SQL문 실행
             ResultSet rs = pstmt.executeQuery();
@@ -31,7 +31,7 @@ public class BoardSelectOne {
                 board.setBcontent(rs.getString("bcontent"));
                 board.setBdate(rs.getDate("bdate"));
                 board.setBfilename(rs.getString("bfilename"));
-                board.setBfiledata(rs.getString("bfiledata"));
+                board.setBfiledata(rs.getBlob("bfiledata"));
                 System.out.println(board);
             }
 

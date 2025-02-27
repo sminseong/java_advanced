@@ -2,6 +2,7 @@ package jdbc.boards;
 
 import lombok.Data;
 
+import java.sql.Blob;
 import java.util.Date;
 
 @Data
@@ -12,5 +13,5 @@ public class Board {
     private String bwriter;
     private Date bdate;
     private String bfilename;
-    private String bfiledata;
+    private Blob bfiledata;
 }

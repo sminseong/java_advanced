@@ -30,7 +30,7 @@ public class BoardSelectAll {
                 board.setBcontent(rs.getString("bcontent"));
                 board.setBdate(rs.getDate("bdate"));
                 board.setBfilename(rs.getString("bfilename"));
-                board.setBfiledata(rs.getString("bfiledata"));
+                //board.setBfiledata(rs.getBlob("bfiledata"));
                 System.out.println(board);
             }
 
