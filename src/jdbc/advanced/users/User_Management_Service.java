@@ -206,9 +206,9 @@ public class User_Management_Service {
             int rows = pstmt.executeUpdate();
             System.out.println(rows + " rows updated.");
 
-            if(rows>0){
+            if( rows>0 ){
                 System.out.println(memId + "회원 정보 수정 완료!!!");
-            }else{
+            } else {
                 System.out.println(memId + "회원 정보 수정 실패~~~");
             }
 
@@ -231,7 +231,7 @@ public class User_Management_Service {
         String memId = scan.next();
 
         int count = getMemberCount(memId);
-        if(count==0){ // 없는 회원이면...
+        if(count==0) { // 없는 회원이면...
             System.out.println(memId + "은(는) 없는 회원ID입니다.");
             System.out.println("수정 작업을 중단합니다.");
             return;
@@ -350,7 +350,7 @@ public class User_Management_Service {
             if (rs.next()) {
                 count = rs.getInt(1);
             }
-            count = rs.getInt(1);
+
         } catch (SQLException e) {
             count = 0;
             e.printStackTrace();
