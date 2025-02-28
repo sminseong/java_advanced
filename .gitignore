@@ -27,3 +27,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+###디비 커넥션 url ###
+!**/src/jdbc/advanced/users/DBUtil1

@@ -2,6 +2,8 @@ package jdbc.users;
 
 import lombok.Data;
 
+import java.util.NoSuchElementException;
+
 @Data
 public class User {
     private String userid;

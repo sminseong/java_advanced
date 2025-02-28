@@ -102,7 +102,8 @@ public class User_Management_Service {
             //DB 연결  후 쿼리 작성
             conn = DBUtil.getConnection();
 
-            String sql = "insert into users values(?,?,?,?,?)";
+            String sql = new StringBuilder()
+                    .append("insert into users values(?,?,?,?,?)").toString();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, memId);
             pstmt.setString(2, memName);

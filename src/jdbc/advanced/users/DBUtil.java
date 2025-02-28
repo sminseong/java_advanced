@@ -19,7 +19,7 @@ public class DBUtil {
 
     public static Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/ssgdb?serverTimezone=Asia/Seoul", "ssg", "ssg");
+            return DriverManager.getConnection(DBUtil1.URL.getValue());
         } catch (SQLException e) {
             System.out.println("connect failed");
             return null;
